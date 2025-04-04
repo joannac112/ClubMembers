@@ -1,4 +1,4 @@
-import java.util.arratList;
+import java.util.ArrayList;
 public class ClubMembers {
     private ArrayList<MemberInfo> memberList;
     public ClubMembers(){
@@ -24,7 +24,22 @@ public class ClubMembers {
      * and are in good standing, as described in part (b).
      */
     public ArrayList<MemberInfo> removeMembers(int year) {
-        /* to be implemented in part (b) */ }
+        ArrayList<MemberInfo> alumni = new ArrayList<MemberInfo>();
+        for (int i = 0 ; i < memberList.size(); i++){
+            MemberInfo member = memberList.get(i);
+            if (member.getGradYear() <= year){
+                if (member.inGoodStanding()){
+                    alumni.add(member);
+                }
+            }
+            memberList.remove(i);
+            i--;
+        }
+        return alumni;
+    }
+    public void setMemberList(ArrayList<MemberInfo> members){
+        memberList = members;
+    }
     // There may be instance variables, constructors, and methods that are not
     // shown.
 }
